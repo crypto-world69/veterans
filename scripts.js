@@ -10,8 +10,9 @@ scriptWeb3Modal.onload = () => {
 document.head.appendChild(scriptWeb3Modal);
 
 function loadWalletConnectProvider() {
+    // Actualizando la URL del WalletConnectProvider
     const scriptWalletConnect = document.createElement('script');
-    scriptWalletConnect.src = 'https://cdnjs.cloudflare.com/ajax/libs/@walletconnect/web3-provider/1.6.6/web3-provider.min.js';
+    scriptWalletConnect.src = 'https://unpkg.com/@walletconnect/web3-provider@1.6.6/dist/umd/index.min.js';
     scriptWalletConnect.onload = () => {
         console.log('WalletConnect loaded');
         loadWeb3();
@@ -40,7 +41,7 @@ function initializeWeb3Modal() {
 
     const providerOptions = {
         walletconnect: {
-            package: WalletConnectProvider,
+            package: WalletConnectProvider.default, // Asegúrate de acceder al default export
             options: {
                 rpc: {
                     1: 'https://cloudflare-eth.com'
