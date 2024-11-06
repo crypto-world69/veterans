@@ -12,7 +12,7 @@ document.head.appendChild(scriptWeb3Modal);
 function loadWalletConnectProvider() {
     // Actualizando la URL del WalletConnectProvider
     const scriptWalletConnect = document.createElement('script');
-    scriptWalletConnect.src = 'https://unpkg.com/@walletconnect/web3-provider@1.6.6/dist/umd/index.min.js';
+    scriptWalletConnect.src = 'https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js'; // Versión estable y accesible
     scriptWalletConnect.onload = () => {
         console.log('WalletConnect loaded');
         loadWeb3();
