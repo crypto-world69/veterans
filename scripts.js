@@ -5,21 +5,29 @@ const scriptWeb3Modal = document.createElement('script');
 scriptWeb3Modal.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3modal/1.9.4/web3modal.min.js';
 scriptWeb3Modal.onload = () => {
     console.log('Web3Modal loaded');
+    loadWalletConnectProvider();
+};
+document.head.appendChild(scriptWeb3Modal);
+
+function loadWalletConnectProvider() {
     const scriptWalletConnect = document.createElement('script');
     scriptWalletConnect.src = 'https://cdnjs.cloudflare.com/ajax/libs/@walletconnect/web3-provider/1.6.6/web3-provider.min.js';
     scriptWalletConnect.onload = () => {
         console.log('WalletConnect loaded');
-        const scriptWeb3 = document.createElement('script');
-        scriptWeb3.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
-        scriptWeb3.onload = () => {
-            console.log('Web3 loaded');
-            initializeWeb3Modal();
-        };
-        document.head.appendChild(scriptWeb3);
+        loadWeb3();
     };
     document.head.appendChild(scriptWalletConnect);
-};
-document.head.appendChild(scriptWeb3Modal);
+}
+
+function loadWeb3() {
+    const scriptWeb3 = document.createElement('script');
+    scriptWeb3.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
+    scriptWeb3.onload = () => {
+        console.log('Web3 loaded');
+        initializeWeb3Modal();
+    };
+    document.head.appendChild(scriptWeb3);
+}
 
 let web3Modal;
 let provider;
@@ -45,6 +53,8 @@ function initializeWeb3Modal() {
         cacheProvider: false,
         providerOptions,
     });
+
+    console.log('Web3Modal initialized');
 }
 
 async function connectWallet() {
