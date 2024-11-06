@@ -12,14 +12,10 @@ if (typeof Web3 === 'undefined') {
     initializeWeb3();
 }
 
-let isConnecting = false;
-
 function initializeWeb3() {
     if (typeof window.ethereum !== 'undefined') {
-        console.log('Web3 wallet detected');
         window.web3 = new Web3(window.ethereum);
     } else if (typeof window.web3 !== 'undefined') {
-        console.log('Legacy Web3 provider detected');
         window.web3 = new Web3(window.web3.currentProvider);
     } else {
         console.warn('No Web3 wallet detected');
@@ -27,17 +23,10 @@ function initializeWeb3() {
 }
 
 async function connectWallet() {
-    if (isConnecting) {
-        console.log('Wallet connection already in progress');
-        return;
-    }
-    isConnecting = true;
-
     if (window.ethereum) {
         try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             if (accounts.length > 0) {
-                console.log('Wallet connected');
                 const walletAddressElement = document.getElementById('wallet-address');
                 if (walletAddressElement) {
                     walletAddressElement.innerText = `Connected: ${accounts[0]}`;
@@ -48,13 +37,9 @@ async function connectWallet() {
             }
         } catch (error) {
             console.error('User rejected wallet connection or error occurred:', error);
-        } finally {
-            isConnecting = false;
         }
     } else {
-        console.warn('No Web3 wallet detected');
         alert('Please install a Web3 wallet like MetaMask, Brave, Phantom, or Trust to proceed.');
-        isConnecting = false;
     }
 }
 
@@ -79,7 +64,6 @@ async function donate() {
             alert('There was an error processing your donation. Please check your wallet and try again.');
         }
     } else {
-        console.warn('No Web3 wallet detected');
         alert('Please install a Web3 wallet like MetaMask, Brave, Phantom, or Trust to proceed.');
     }
 }
@@ -87,14 +71,12 @@ async function donate() {
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.connect-wallet').forEach(button => {
         button.addEventListener('click', () => {
-            console.log('Connect wallet button clicked');
             connectWallet();
         });
     });
 
     document.querySelectorAll('.donate-button').forEach(button => {
         button.addEventListener('click', () => {
-            console.log('Donate button clicked');
             donate();
         });
     });
