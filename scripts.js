@@ -3,7 +3,7 @@
 // Load the Web3.js library if not already loaded
 if (typeof Web3 === 'undefined') {
     const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.0/web3.min.js';
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
     script.onload = () => {
         initializeWeb3();
     };
@@ -13,23 +13,15 @@ if (typeof Web3 === 'undefined') {
 }
 
 function initializeWeb3() {
-    window.addEventListener('load', async () => {
-        if (typeof window.ethereum !== 'undefined') {
-            console.log('Web3 wallet detected');
-            window.web3 = new Web3(window.ethereum);
-            try {
-                await window.ethereum.request({ method: 'eth_requestAccounts' });
-                console.log('Wallet connected');
-            } catch (error) {
-                console.error('User rejected wallet connection or error occurred:', error);
-            }
-        } else if (typeof window.web3 !== 'undefined') {
-            console.log('Legacy Web3 provider detected');
-            window.web3 = new Web3(window.web3.currentProvider);
-        } else {
-            console.warn('No Web3 wallet detected');
-        }
-    });
+    if (typeof window.ethereum !== 'undefined') {
+        console.log('Web3 wallet detected');
+        window.web3 = new Web3(window.ethereum);
+    } else if (typeof window.web3 !== 'undefined') {
+        console.log('Legacy Web3 provider detected');
+        window.web3 = new Web3(window.web3.currentProvider);
+    } else {
+        console.warn('No Web3 wallet detected');
+    }
 }
 
 async function connectWallet() {
