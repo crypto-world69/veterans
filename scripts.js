@@ -59,7 +59,7 @@ async function connectWallet() {
 }
 
 async function donate() {
-    if (window.web3) {
+    if (window.web3 && window.web3.eth) {
         try {
             const accounts = await window.web3.eth.getAccounts();
             if (accounts.length === 0) {
@@ -79,7 +79,7 @@ async function donate() {
             alert('There was an error processing your donation. Please check your wallet and try again.');
         }
     } else {
-        alert('Please install a Web3 wallet to proceed.');
+        alert('Please connect your wallet before attempting to donate.');
     }
 }
 
