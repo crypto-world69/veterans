@@ -1,15 +1,20 @@
 // scripts.js
 
-// Load the Web3Modal and Web3.js library
+// Load the Web3Modal, Web3.js, and WalletConnect libraries
 const scriptWeb3Modal = document.createElement('script');
 scriptWeb3Modal.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3modal/1.9.4/web3modal.min.js';
 scriptWeb3Modal.onload = () => {
-    const scriptWeb3 = document.createElement('script');
-    scriptWeb3.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
-    scriptWeb3.onload = () => {
-        initializeWeb3Modal();
+    const scriptWalletConnect = document.createElement('script');
+    scriptWalletConnect.src = 'https://cdnjs.cloudflare.com/ajax/libs/walletconnect/1.7.1/web3-provider.min.js';
+    scriptWalletConnect.onload = () => {
+        const scriptWeb3 = document.createElement('script');
+        scriptWeb3.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
+        scriptWeb3.onload = () => {
+            initializeWeb3Modal();
+        };
+        document.head.appendChild(scriptWeb3);
     };
-    document.head.appendChild(scriptWeb3);
+    document.head.appendChild(scriptWalletConnect);
 };
 document.head.appendChild(scriptWeb3Modal);
 
@@ -19,7 +24,7 @@ let provider;
 function initializeWeb3Modal() {
     const providerOptions = {
         walletconnect: {
-            package: window.WalletConnectProvider.default,
+            package: WalletConnectProvider.default,
             options: {
                 rpc: {
                     1: 'https://cloudflare-eth.com'
