@@ -4,12 +4,15 @@
 const scriptWeb3Modal = document.createElement('script');
 scriptWeb3Modal.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3modal/1.9.4/web3modal.min.js';
 scriptWeb3Modal.onload = () => {
+    console.log('Web3Modal loaded');
     const scriptWalletConnect = document.createElement('script');
     scriptWalletConnect.src = 'https://cdnjs.cloudflare.com/ajax/libs/@walletconnect/web3-provider/1.6.6/web3-provider.min.js';
     scriptWalletConnect.onload = () => {
+        console.log('WalletConnect loaded');
         const scriptWeb3 = document.createElement('script');
         scriptWeb3.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
         scriptWeb3.onload = () => {
+            console.log('Web3 loaded');
             initializeWeb3Modal();
         };
         document.head.appendChild(scriptWeb3);
@@ -22,6 +25,11 @@ let web3Modal;
 let provider;
 
 function initializeWeb3Modal() {
+    if (typeof WalletConnectProvider === 'undefined' || typeof Web3Modal === 'undefined') {
+        console.error("WalletConnectProvider or Web3Modal not loaded properly.");
+        return;
+    }
+
     const providerOptions = {
         walletconnect: {
             package: WalletConnectProvider,
@@ -41,6 +49,12 @@ function initializeWeb3Modal() {
 
 async function connectWallet() {
     try {
+        if (!web3Modal) {
+            console.error('Web3Modal is not initialized.');
+            alert('Web3Modal is not initialized.');
+            return;
+        }
+
         provider = await web3Modal.connect();
         window.web3 = new Web3(provider);
         const accounts = await window.web3.eth.getAccounts();
@@ -59,7 +73,7 @@ async function connectWallet() {
 }
 
 async function donate() {
-    if (window.web3 && window.web3.eth) {
+    if (window.web3) {
         try {
             const accounts = await window.web3.eth.getAccounts();
             if (accounts.length === 0) {
@@ -79,7 +93,7 @@ async function donate() {
             alert('There was an error processing your donation. Please check your wallet and try again.');
         }
     } else {
-        alert('Please connect your wallet before attempting to donate.');
+        alert('Please install a Web3 wallet to proceed.');
     }
 }
 
