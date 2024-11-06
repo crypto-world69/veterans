@@ -12,6 +12,8 @@ if (typeof Web3 === 'undefined') {
     initializeWeb3();
 }
 
+let isConnecting = false;
+
 function initializeWeb3() {
     if (typeof window.ethereum !== 'undefined') {
         console.log('Web3 wallet detected');
@@ -25,6 +27,12 @@ function initializeWeb3() {
 }
 
 async function connectWallet() {
+    if (isConnecting) {
+        console.log('Wallet connection already in progress');
+        return;
+    }
+    isConnecting = true;
+
     if (window.ethereum) {
         try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -40,11 +48,13 @@ async function connectWallet() {
             }
         } catch (error) {
             console.error('User rejected wallet connection or error occurred:', error);
-            alert('Connection to the wallet was rejected or an error occurred. Please try again.');
+        } finally {
+            isConnecting = false;
         }
     } else {
         console.warn('No Web3 wallet detected');
         alert('Please install a Web3 wallet like MetaMask, Brave, Phantom, or Trust to proceed.');
+        isConnecting = false;
     }
 }
 
