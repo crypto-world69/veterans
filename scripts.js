@@ -1,12 +1,17 @@
 // scripts.js
 
-// Load the Web3Modal library
-const script = document.createElement('script');
-script.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3modal/1.9.4/web3modal.min.js';
-script.onload = () => {
-    initializeWeb3Modal();
+// Load the Web3Modal and Web3.js library
+const scriptWeb3Modal = document.createElement('script');
+scriptWeb3Modal.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3modal/1.9.4/web3modal.min.js';
+scriptWeb3Modal.onload = () => {
+    const scriptWeb3 = document.createElement('script');
+    scriptWeb3.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
+    scriptWeb3.onload = () => {
+        initializeWeb3Modal();
+    };
+    document.head.appendChild(scriptWeb3);
 };
-document.head.appendChild(script);
+document.head.appendChild(scriptWeb3Modal);
 
 let web3Modal;
 let provider;
@@ -16,7 +21,9 @@ function initializeWeb3Modal() {
         walletconnect: {
             package: window.WalletConnectProvider.default,
             options: {
-                infuraId: '820a054fb46c40b8abe22f78c1960b30'
+                rpc: {
+                    1: 'https://cloudflare-eth.com'
+                }
             }
         }
     };
