@@ -5,7 +5,7 @@ const scriptWeb3Modal = document.createElement('script');
 scriptWeb3Modal.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3modal/1.9.4/web3modal.min.js';
 scriptWeb3Modal.onload = () => {
     const scriptWalletConnect = document.createElement('script');
-    scriptWalletConnect.src = 'https://cdnjs.cloudflare.com/ajax/libs/walletconnect/1.7.1/web3-provider.min.js';
+    scriptWalletConnect.src = 'https://cdnjs.cloudflare.com/ajax/libs/@walletconnect/web3-provider/1.6.6/web3-provider.min.js';
     scriptWalletConnect.onload = () => {
         const scriptWeb3 = document.createElement('script');
         scriptWeb3.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
@@ -24,7 +24,7 @@ let provider;
 function initializeWeb3Modal() {
     const providerOptions = {
         walletconnect: {
-            package: WalletConnectProvider.default,
+            package: WalletConnectProvider,
             options: {
                 rpc: {
                     1: 'https://cloudflare-eth.com'
