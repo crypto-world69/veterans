@@ -1,0 +1,70 @@
+/* styles.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section {
+    background: url('hero-background.jpg') no-repeat center center/cover;
+    padding: 100px 0;
+}
+
+.hero-section .btn {
+    margin-top: 20px;
+}
+
+/* About Section */
+.about-section {
+    background-color: #ffffff;
+}
+
+.about-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Donate Section */
+.donate-section {
+    background-color: #e9ecef;
+}
+
+.donate-section .btn {
+    margin-top: 20px;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #ffffff;
+}
+
+.contact-section form .form-control {
+    margin-bottom: 15px;
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 0;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+    .navbar-nav {
+        text-align: center;
+    }
+}
