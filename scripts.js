@@ -1,45 +1,48 @@
 // scripts.js
 
-// Load the Web3.js library if not already loaded
-if (typeof Web3 === 'undefined') {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3/4.14.0/web3.min.js';
-    script.onload = () => {
-        initializeWeb3();
-    };
-    document.head.appendChild(script);
-} else {
-    initializeWeb3();
-}
+// Load the Web3Modal library
+const script = document.createElement('script');
+script.src = 'https://cdnjs.cloudflare.com/ajax/libs/web3modal/1.9.4/web3modal.min.js';
+script.onload = () => {
+    initializeWeb3Modal();
+};
+document.head.appendChild(script);
 
-function initializeWeb3() {
-    if (typeof window.ethereum !== 'undefined') {
-        window.web3 = new Web3(window.ethereum);
-    } else if (typeof window.web3 !== 'undefined') {
-        window.web3 = new Web3(window.web3.currentProvider);
-    } else {
-        console.warn('No Web3 wallet detected');
-    }
+let web3Modal;
+let provider;
+
+function initializeWeb3Modal() {
+    const providerOptions = {
+        walletconnect: {
+            package: window.WalletConnectProvider.default,
+            options: {
+                infuraId: 'YOUR_INFURA_ID' // Replace with your Infura Project ID
+            }
+        }
+    };
+
+    web3Modal = new Web3Modal.default({
+        cacheProvider: false,
+        providerOptions,
+    });
 }
 
 async function connectWallet() {
-    if (window.ethereum) {
-        try {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            if (accounts.length > 0) {
-                const walletAddressElement = document.getElementById('wallet-address');
-                if (walletAddressElement) {
-                    walletAddressElement.innerText = `Connected: ${accounts[0]}`;
-                }
-                alert('Wallet connected successfully');
-            } else {
-                alert('No accounts found. Please try connecting your wallet again.');
+    try {
+        provider = await web3Modal.connect();
+        window.web3 = new Web3(provider);
+        const accounts = await window.web3.eth.getAccounts();
+        if (accounts.length > 0) {
+            const walletAddressElement = document.getElementById('wallet-address');
+            if (walletAddressElement) {
+                walletAddressElement.innerText = `Connected: ${accounts[0]}`;
             }
-        } catch (error) {
-            console.error('User rejected wallet connection or error occurred:', error);
+            alert('Wallet connected successfully');
+        } else {
+            alert('No accounts found. Please try connecting your wallet again.');
         }
-    } else {
-        alert('Please install a Web3 wallet like MetaMask, Brave, Phantom, or Trust to proceed.');
+    } catch (error) {
+        console.error('User rejected wallet connection or error occurred:', error);
     }
 }
 
@@ -64,7 +67,7 @@ async function donate() {
             alert('There was an error processing your donation. Please check your wallet and try again.');
         }
     } else {
-        alert('Please install a Web3 wallet like MetaMask, Brave, Phantom, or Trust to proceed.');
+        alert('Please install a Web3 wallet to proceed.');
     }
 }
 
