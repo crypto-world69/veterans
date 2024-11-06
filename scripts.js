@@ -16,7 +16,7 @@ function initializeWeb3Modal() {
         walletconnect: {
             package: window.WalletConnectProvider.default,
             options: {
-                infuraId: 'YOUR_INFURA_ID' // Replace with your Infura Project ID
+                infuraId: '820a054fb46c40b8abe22f78c1960b30'
             }
         }
     };
