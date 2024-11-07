@@ -1,0 +1,245 @@
+/* General Styles */
+
+body {
+    font-family: 'Staatliches', serif;
+    line-height: 1.8;
+    font-size: 1.2rem; /* Aumentar el tamaño de la fuente para mayor presencia visual */
+    background-color: #f8f9fa;
+    padding-top: 80px; /* Espacio para compensar el navbar fijo */
+}
+
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Hace que el navbar esté siempre visible */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030; /* Asegura que el navbar esté sobre otros elementos */
+    background-color: #ffffff;
+    padding: 15px 0; /* Aumentar el espaciado para mayor impacto visual */
+    transition: background-color 0.3s;
+    font-family: 'Stencil', sans-serif; /* Fuente de la barra de navegación */
+    font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #343a40;
+    padding: 120px 0; /* Aumentar el padding para mayor impacto visual */
+    background: linear-gradient(135deg, #0051ff, #ff0000);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    text-align: center;
+    font-family: 'Stencil', serif; /* Nueva fuente para la sección principal */
+}
+
+.hero-title {
+    animation: fadeIn 2s ease-in-out;
+    font-size: 4rem; /* Aumentar el tamaño de la fuente para mayor presencia visual */
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'Stencil', serif; /* Aplicación de la nueva fuente */
+}
+
+.contract-address {
+    font-size: 1.6rem; /* Aumentar el tamaño de la fuente */
+    margin-top: 20px;
+    color: #ffffff;
+    font-family: 'Stencil', sans-serif;
+}
+
+.btn-primary {
+    background-color: #0e5aff;
+    border-color: #0e5aff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* About, Mission, How to Buy, and Donate Sections */
+.about-section, .mission-section, .how-to-buy-section, .donate-section {
+    padding: 70px 0; /* Aumentar el padding para mayor presencia visual */
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    font-family: 'Staatliches', sans-serif; /* Aplicar la nueva fuente */
+    font-size: 1.4rem; /* Aumentar el tamaño de la fuente */
+}
+
+.section-title {
+    font-size: 2.5rem; /* Aumentar el tamaño de la fuente para mayor presencia visual */
+    font-weight: 700;
+    margin-bottom: 25px;
+    font-family: 'Staatliches', serif;
+}
+
+.section-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.section-image:hover {
+    transform: scale(1.05);
+}
+
+/* Añadir márgenes para imágenes que están a la derecha */
+.row .order-lg-2 .section-image {
+    margin-left: 30px; /* Añadir margen a la izquierda de las imágenes que están a la derecha */
+}
+
+.row .order-lg-1 .section-image {
+    margin-right: 30px; /* Añadir margen a la derecha de las imágenes que están a la izquierda */
+}
+
+.how-to-buy-list {
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 0;
+    font-size: 1.4rem; /* Aumentar el tamaño de la fuente */
+    font-family: 'Staatliches', sans-serif; /* Aplicar la nueva fuente */
+}
+
+.how-to-buy-list li {
+    margin-bottom: 25px; /* Aumentar el espaciado entre elementos de la lista */
+}
+
+/* Text and Image Alignment for Sections */
+.about-section .row, 
+.mission-section .row,
+.how-to-buy-section .row,
+.donate-section .row {
+    display: flex;
+    align-items: center;
+}
+
+.mission-section .row,
+.donate-section .row {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+/* Donate Button Styles */
+.donate-section .btn {
+    margin-top: 25px; /* Aumentar el margen superior para mejor separación */
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem; /* Aumentar el tamaño de la fuente */
+}
+
+.donate-section .btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+    .navbar-nav {
+        text-align: center;
+    }
+    .about-section .row,
+    .mission-section .row,
+    .how-to-buy-section .row,
+    .donate-section .row {
+        flex-direction: column;
+    }
+
+    .section-image {
+        margin-bottom: 20px;
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Carousel Styles */
+.carousel-item {
+    padding: 40px 0; /* Espacio adicional para mejorar la legibilidad */
+}
+
+.carousel .section-image {
+    max-height: 400px; /* Asegura que las imágenes tengan una altura máxima consistente */
+    object-fit: cover;
+    margin: 0 auto; /* Centrando las imágenes en el carrusel */
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejorar la legibilidad del texto */
+    padding: 25px;
+    border-radius: 8px;
+    font-size: 1.4rem; /* Aumentar el tamaño de la fuente */
+}
+
+.carousel-control-next, .carousel-control-prev {
+    filter: invert(100%); /* Cambia el color de los controles para mejor visibilidad */
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #0051ff; /* Cambia el color de los indicadores de navegación del carrusel */
+}
+
+/* Espaciado entre imágenes y texto en las secciones */
+.row .order-lg-2 .section-image {
+    margin-left: 30px;
+}
+
+.row .order-lg-1 .section-image {
+    margin-right: 30px;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .carousel-item {
+        padding: 20px 0;
+    }
+
+    .carousel .section-image {
+        max-height: 300px;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 25px 0;
+    font-family: 'Stencil', sans-serif;
+    font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
+}
+
+.footer p {
+    margin: 0;
+}
