@@ -26,7 +26,7 @@ body {
     padding: 15px 0; /* Aumentar el espaciado para mayor impacto visual */
     transition: background-color 0.3s;
     font-family: 'BlackOpsOne', sans-serif; /* Fuente de la barra de navegación */
-    font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
+    font-size: 1.3rem; /* Aumentar el tamaño de la fuente */
 }
 
 .navbar-brand img {
