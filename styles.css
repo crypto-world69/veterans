@@ -1,5 +1,12 @@
 /* General Styles */
 
+@font-face {
+    font-family: 'BlackOpsOne';
+    src: url('./fonts/BlackOpsOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     font-family: 'Staatliches', serif;
     line-height: 1.8;
@@ -18,7 +25,7 @@ body {
     background-color: #ffffff;
     padding: 15px 0; /* Aumentar el espaciado para mayor impacto visual */
     transition: background-color 0.3s;
-    font-family: 'Stencil', sans-serif; /* Fuente de la barra de navegación */
+    font-family: 'BlackOpsOne', sans-serif; /* Fuente de la barra de navegación */
     font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
 }
 
@@ -34,7 +41,7 @@ body {
     background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
     text-align: center;
-    font-family: 'Stencil', serif; /* Nueva fuente para la sección principal */
+    font-family: 'BlackOpsOne', serif; /* Nueva fuente para la sección principal */
 }
 
 .hero-title {
@@ -42,14 +49,14 @@ body {
     font-size: 4rem; /* Aumentar el tamaño de la fuente para mayor presencia visual */
     font-weight: 700;
     color: #ffffff;
-    font-family: 'Stencil', serif; /* Aplicación de la nueva fuente */
+    font-family: 'BlackOpsOne', serif; /* Aplicación de la nueva fuente */
 }
 
 .contract-address {
     font-size: 1.6rem; /* Aumentar el tamaño de la fuente */
     margin-top: 20px;
     color: #ffffff;
-    font-family: 'Stencil', sans-serif;
+    font-family: 'BlackOpsOne', sans-serif;
 }
 
 .btn-primary {
@@ -236,7 +243,7 @@ body {
     background-color: #343a40;
     color: #ffffff;
     padding: 25px 0;
-    font-family: 'Stencil', sans-serif;
+    font-family: 'BlackOpsOne', sans-serif;
     font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
 }
 
