@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/veterans/static/css/main.f134dbc7.css",
-    "main.js": "/veterans/static/js/main.96257a25.js",
+    "main.js": "/veterans/static/js/main.515da820.js",
     "static/js/8397.49c431d6.chunk.js": "/veterans/static/js/8397.49c431d6.chunk.js",
     "static/js/7401.400db23d.chunk.js": "/veterans/static/js/7401.400db23d.chunk.js",
     "static/js/5902.0b33cf7e.chunk.js": "/veterans/static/js/5902.0b33cf7e.chunk.js",
@@ -65,12 +65,14 @@
     "static/js/6374.7b7ae43b.chunk.js": "/veterans/static/js/6374.7b7ae43b.chunk.js",
     "static/media/honor.gif": "/veterans/static/media/honor.2751324cca7efe2b6d45.gif",
     "static/media/slogan.webp": "/veterans/static/media/slogan.0b248d97468cd2a6da2d.webp",
+    "static/media/about-image.webp": "/veterans/static/media/about-image.7ff12699f9960f9ffa2c.webp",
     "static/media/thanks.webp": "/veterans/static/media/thanks.3440b93b417098ae20e0.webp",
-    "static/media/about-image.jpg": "/veterans/static/media/about-image.6dc7309ce79618889bcb.jpg",
+    "static/media/veteransBattle.jpg": "/veterans/static/media/veteransBattle.6dc7309ce79618889bcb.jpg",
+    "static/media/logo_footer.png": "/veterans/static/media/logo_footer.349c352f75176ad59513.png",
     "static/media/logo.gif": "/veterans/static/media/logo.9e92e9c888145c53efb1.gif",
     "index.html": "/veterans/index.html",
     "main.f134dbc7.css.map": "/veterans/static/css/main.f134dbc7.css.map",
-    "main.96257a25.js.map": "/veterans/static/js/main.96257a25.js.map",
+    "main.515da820.js.map": "/veterans/static/js/main.515da820.js.map",
     "8397.49c431d6.chunk.js.map": "/veterans/static/js/8397.49c431d6.chunk.js.map",
     "5902.0b33cf7e.chunk.js.map": "/veterans/static/js/5902.0b33cf7e.chunk.js.map",
     "9580.88df4f45.chunk.js.map": "/veterans/static/js/9580.88df4f45.chunk.js.map",
@@ -133,6 +135,6 @@
   },
   "entrypoints": [
     "static/css/main.f134dbc7.css",
-    "static/js/main.96257a25.js"
+    "static/js/main.515da820.js"
   ]
 }

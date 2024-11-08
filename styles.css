@@ -35,13 +35,16 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background-color: #343a40;
+    background: linear-gradient(135deg, #0051ff, #ff0000), 
+                url('./images/heroStars.png');
+    background-size: cover, 400% 400%;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay; /* Mezcla el gradiente y la imagen */
     padding: 120px 0; /* Aumentar el padding para mayor impacto visual */
-    background: linear-gradient(135deg, #0051ff, #ff0000);
-    background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
     text-align: center;
     font-family: 'BlackOpsOne', serif; /* Nueva fuente para la sección principal */
+    position: relative; /* Necesario para el pseudo-elemento */
 }
 
 .hero-title {
@@ -90,11 +93,13 @@ body {
 }
 
 /* About, Mission, How to Buy, and Donate Sections */
-.about-section, .mission-section, .how-to-buy-section, .donate-section {
+.about-section, .mission-section, .how-to-buy-section, .crypto-veterans-section, .donate-section {
     padding: 70px 0; /* Aumentar el padding para mayor presencia visual */
     background-color: #ffffff;
     display: flex;
     align-items: center;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Asegura que el texto esté centrado */
     font-family: 'Staatliches', sans-serif; /* Aplicar la nueva fuente */
     font-size: 1.4rem; /* Aumentar el tamaño de la fuente */
 }
@@ -108,24 +113,23 @@ body {
 
 .section-image {
     width: 100%;
-    max-width: 500px;
+    max-width: 500px; /* Asegura un tamaño máximo uniforme para todas las imágenes */
     height: auto;
     transition: transform 0.5s ease-in-out;
     border-radius: 8px;
     object-fit: cover;
+    margin: 0 auto; /* Asegura que las imágenes estén centradas */
 }
 
 .section-image:hover {
     transform: scale(1.05);
 }
 
-/* Añadir márgenes para imágenes que están a la derecha */
-.row .order-lg-2 .section-image {
-    margin-left: 30px; /* Añadir margen a la izquierda de las imágenes que están a la derecha */
-}
-
-.row .order-lg-1 .section-image {
-    margin-right: 30px; /* Añadir margen a la derecha de las imágenes que están a la izquierda */
+/* Images */
+.row .order-lg-2 .section-image,
+.row .section-image {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .how-to-buy-list {
@@ -145,6 +149,7 @@ body {
 .about-section .row, 
 .mission-section .row,
 .how-to-buy-section .row,
+.crypto-veterans-section .row,
 .donate-section .row {
     display: flex;
     align-items: center;
@@ -181,8 +186,11 @@ body {
     .about-section .row,
     .mission-section .row,
     .how-to-buy-section .row,
+    .crypto-veterans-section .row,
     .donate-section .row {
         flex-direction: column;
+        align-items: center; /* Asegura que los elementos estén centrados verticalmente */
+        text-align: center; /* Asegura que el texto esté centrado */
     }
 
     .section-image {
@@ -237,16 +245,109 @@ body {
         max-height: 300px;
     }
 }
+/* Ticker line*/
+.ticker-container {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0051ff, #ff0000);
+    animation: gradientAnimation 10s ease infinite;
+    padding: 5px 0;
+    position: relative;
+  }
+  
+  .ticker {
+    display: flex;
+    animation: ticker-left 60s linear infinite; /* Por defecto, mueve de izquierda a derecha */
+  }
+  
+  .ticker-right {
+    animation: ticker-right 60s linear infinite; /* Mueve de derecha a izquierda */
+  }
+  
+  .ticker-content {
+    display: flex;
+    white-space: nowrap;
+    padding-right: 25px; /* Espacio entre las repeticiones del texto */
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+  }
+  
+  @keyframes ticker-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @keyframes ticker-right {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }  
 
 /* Footer */
 .footer {
     background-color: #343a40;
     color: #ffffff;
-    padding: 25px 0;
+    padding: 20px 0;
     font-family: 'BlackOpsOne', sans-serif;
-    font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
+    display: flex;
+    justify-content: space-between; /* Distribuir uniformemente */
+    align-items: center; /* Centrar verticalmente todos los elementos */
+    text-align: center;
+    flex-wrap: nowrap; /* Evitar que los elementos se muevan a otra línea */
 }
 
-.footer p {
+.footer .footer-logo {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente el logo dentro de su columna */
+    align-items: center; /* Asegurar que el logo esté centrado verticalmente */
+    text-align: left; 
+}
+
+.footer .footer-text {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .footer-icons {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente los iconos */
+    align-items: center; /* Asegurar que los iconos estén centrados verticalmente */
+    text-align: right; 
+}
+
+.footer ul.list-inline {
+    padding: 20px;
     margin: 0;
+    list-style: none;
+}
+
+.footer ul.list-inline li {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.footer ul.list-inline li a {
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.footer ul.list-inline li a:hover {
+    color: #0e5aff; /* Cambia el color cuando se pasa el mouse */
+}
+
+.footer-logo img {
+    height: 60px; /* Ajusta el tamaño según sea necesario */
 }
